@@ -55,10 +55,40 @@ const token = generateAuthToken(user, "random");
 
 ## Access user from request
 
-You can access user info directly from request itself. If you are having a
+You can access user info directly from request itself. If you are having a authorized route
 
 ```js
 authorizedRoute(request,response){
     const {user} = request; // access all user info
 }
+```
+
+## Mongoose auth plugin
+
+> Hydyco core uses this plugin by default, so no need to use it manually. You need to use this when you are manually updating the user schema.
+
+Auth also exports a mongoose plugin that handles password hashing and comparison
+
+```js
+const { authMongoosePlugin } = require("@hydyco/auth");
+const userSchema = new HydycoModel("user").mongooseSchema();
+
+userSchema.plugin(authMongoosePlugin);
+```
+
+- By doing this, now any new record getting created will hash the password by it self.
+
+- Plus this will expose a helper method `comparePassword` to compare password, generally while making a user auth.
+
+```js
+const user = new HydycoModel("user").mongooseModel();
+
+user.comparePassword(req.body.password, (err, isMatch) => {
+  if (err) {
+    console.log(err);
+  }
+  if (isMatch) {
+    console.log("Password Matched");
+  }
+});
 ```
