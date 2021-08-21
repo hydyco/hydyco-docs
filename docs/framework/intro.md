@@ -7,7 +7,7 @@ title: Introduction
 
 Hydyco is segregated into different modules which work together with each other.
 
-All Hydyco Framework modules
+All Hydyco Framework modules created by core team
 
 - [hydyco-core](https://www.npmjs.com/package/@hydyco/core)
 - [hydyco-admin-plugin](https://www.npmjs.com/package/@hydyco/admin-plugin)
