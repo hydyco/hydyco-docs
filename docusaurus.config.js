@@ -1,5 +1,4 @@
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const nightOwl = require("prism-react-renderer/themes/nightOwl");
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -65,7 +64,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Hydyco.`,
     },
     prism: {
-      theme: lightCodeTheme,
+      theme: nightOwl,
     },
   },
   presets: [
