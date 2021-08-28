@@ -1,25 +1,40 @@
 import React from "react";
-import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import { useHistory } from "react-router-dom";
+
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const history = useHistory();
   return (
     <header className={styles.heroBanner}>
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
+          <button
+            className="button-blue-3d"
+            onClick={() => {
+              window.open("https://demo.hydyco.com", "_blank").focus();
+            }}
           >
-            Get Started With Docs ⏱️
-          </Link>
+            {" "}
+            Checkout demo
+          </button>
+          <span style={{ marginLeft: 10 }}></span>
+          <button
+            className="button-black-3d"
+            onClick={() => {
+              history.push("/docs/intro");
+            }}
+          >
+            {" "}
+            Start with docs ⏱️
+          </button>
         </div>
       </div>
     </header>

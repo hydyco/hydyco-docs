@@ -28,3 +28,53 @@
   padding: 0 var(--ifm-pre-padding);
   font-size: 16px;
 }
+
+.button-black-3d {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #343a40;
+  box-shadow: 0 5px #212529;
+}
+.button-black-3d:hover {
+  box-shadow: 0 3px #212529;
+  top: 1px;
+}
+.button-black-3d:active {
+  box-shadow: 0 0 #212529;
+  top: 5px;
+}
+
+.button-blue-3d {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #3a86ff;
+  box-shadow: 0 5px #4433ff;
+}
+.button-blue-3d:hover {
+  box-shadow: 0 3px #4433ff;
+  top: 1px;
+}
+.button-blue-3d:active {
+  box-shadow: 0 0 #4433ff;
+  top: 5px;
+}

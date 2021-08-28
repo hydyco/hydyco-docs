@@ -2,7 +2,7 @@ const nightOwl = {
   plain: {
     color: "#d6deeb",
     backgroundColor: "#011627",
-    fontSize: 14,
+    fontSize: 16,
     letterSpacing: 0.8,
     fontWeight: "500",
   },

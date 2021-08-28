@@ -26,7 +26,17 @@ server.registerRoutes([cart]);
 
 ## Main Methods
 
-> Methods can be managed from **[admin panel](/docs/admin/core/collectoins#create-new-schema)**
+:::info
+Methods can be managed from **[admin panel](/docs/admin/core/collectoins#create-new-schema)**
+:::
+
+| Params               | Description                                        |
+| :------------------- | :------------------------------------------------- |
+| request              | express request, includes **methodCall**           |
+| response             | express response                                   |
+| next                 | express next function, to forward the request call |
+| MongooseModel        | working mongoose model                             |
+| HelperMongooseModels | helper mongoose models                             |
 
 ### list
 
@@ -101,7 +111,9 @@ All methods except same arguments
 
 `before method` runs before every request. Before can be treated as pre middleware that will get execute before every request made in `HydycoRoutes`.
 
-> request has special attribute **methodCall** - which is basically the current method which will get executed, rest remains the same
+:::info
+`request` has special attribute **methodCall** - which is basically the current method which will get executed, rest remains the same
+:::
 
 | Params               | Description                                        |
 | :------------------- | :------------------------------------------------- |
@@ -134,34 +146,140 @@ All methods except same arguments
   }
 ```
 
-## Adding Route Middleware
+### after
+
+`after method` runs after every request. After can be treated as post middleware that will get executed after every request is completed in `HydycoRoutes`.
+
+:::info
+`request` has special attribute **methodCall** - which is basically the current method which will get executed, rest remains the same
+:::
+
+| Params   | Description                              |
+| :------- | :--------------------------------------- |
+| result   | Result returned by every method          |
+| request  | express request, includes **methodCall** |
+| response | express response                         |
 
 ```js
-cart.addMiddleware("list", (req, res, next) => {
-  next();
-});
+  after(result, request, response) {
+    if (request.methodCall === "list") {
+      if (result.length) {
+        result = result[0];
+      } else result = null;
+    }
+
+    return response.send(result);
+  }
 ```
+
+> after method always expect a **return** statement
+
+## Custom Routes
+
+You can add custom routes if required
 
 ```js
 const { MongooseExpress } = require("@hydyco/mongoose-plugin");
 
 class CartRoutes extends MongooseExpress {
   constructor() {
-    super("cart", ["cartItem"]);
+    super("cart");
   }
 
-  async read(req, res, Cart, [CartItem]) {
+  customRoutes(router, defaultPath, model, helperModels) {
+    router.get(defaultPath + "/custom", async (request, response) => {
+      const result = await model.find({});
+      return response.send(result);
+    });
+    return router;
+  }
+}
+
+module.exports = new CartRoutes();
+```
+
+:::danger Important
+
+Custom Routes method always expect router as return
+
+:::
+
+## Adding Route Middleware
+
+You can add middleware specific to methods,
+
+```js
+const cart = new MongooseExpress("cart");
+
+// single
+cart.addMiddleware("list", (req, res, next) => {
+  next();
+});
+
+// multiple
+cart.addMiddleware("list", [
+  (req, res, next) => {
+    next();
+  },
+]);
+```
+
+## Override complete example
+
+```js
+const { MongooseExpress, HydycoModel } = require("@hydyco/mongoose-plugin");
+
+const UserProfile = new HydycoModel("userProfile").mongooseModel();
+
+class UserRoutes extends MongooseExpress {
+  constructor() {
+    super("user", ["userProfile"]);
+  }
+
+  // before method
+  async before(request, response, next, User, [UserProfile]) {
+    const { methodCall } = request;
+
+    if (methodCall === "create") {
+      if (request.body && request.body.email && request.body.password) {
+        return next();
+      } else {
+        return response.send({ status: false, message: "Data missing" });
+      }
+    } else {
+      return next();
+    }
+  }
+
+  // after method
+  async after(result, request, response) {
+    const { methodCall } = request;
+
+    if (methodCall === "create") {
+      await UserProfile.create({ userId: result._id });
+    }
+
+    return response.send(result);
+  }
+
+  // override default read method
+  read(request, response, User, [UserProfile]) {
     try {
-      const cart = await Cart.findById(req.params.id).lean();
-      const cartItems = await CartItem.find({
-        cart: cart._id,
-        orderPlaced: false,
-      }).lean();
-      cart.items = cartItems;
-      return res.send({ cart });
+      const user = await User.find({});
+      const userProfile = await UserProfile.findOne({ userId: user._id });
+      return response.send({ users, userProfile });
     } catch (error) {
-      return res.status(500).send({ status: false, message: error.message });
+      return response.send({ status: false, message: error.message });
     }
   }
 }
+
+const userRoutes = new UserRoutes();
+
+// adding middleware
+userRoutes.addMiddleware("list", (req, res, next) => {
+  console.log("In list method");
+});
+
+module.exports = userRoutes;
 ```
