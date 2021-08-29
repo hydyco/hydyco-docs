@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import { useHistory } from "react-router-dom";
 
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -11,10 +10,14 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   const history = useHistory();
   return (
-    <header className={styles.heroBanner}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+    <header>
+      <div className={styles.container}>
+        <img src="/img/blue.svg" />
+        <p className={styles.tag_line}>
+          Hydyco helps you to build your APIs fast 💨.
+          <i> Simple alternative of </i>
+          <a href="https://strapi.io/">Strapi</a>
+        </p>
         <div className={styles.buttons}>
           <button
             className="button-blue-3d"
@@ -45,7 +48,7 @@ export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
+      title={`Home`}
       description="Hydyco helps you to build your APIs fast 💨"
     >
       <HomepageHeader />

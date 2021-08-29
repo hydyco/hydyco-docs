@@ -5,4 +5,6 @@ title: Custom Plugin
 
 Hydyco provides option to create your own plugins
 
-> WIP: Plugins are working in progress
+:::tip WIP
+Plugins are working in progress
+:::

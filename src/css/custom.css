@@ -78,3 +78,16 @@
   box-shadow: 0 0 #4433ff;
   top: 5px;
 }
+
+/* custom css - override */
+
+.navbar__brand {
+  margin-right: 0px;
+}
+
+@media only screen and (max-width: 996px) {
+  .navbar__items .navbar__brand {
+    width: 100%;
+    justify-content: center;
+  }
+}

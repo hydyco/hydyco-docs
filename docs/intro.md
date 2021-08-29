@@ -4,13 +4,11 @@ sidebar_position: 1
 
 # Introduction
 
-Welcome to Hydyco!
-
-This is the official documentation website for the framework. We have divided the documentation into multiple groups, each trying to address a specific use case or audience.
+This is the official documentation website for the **Hydyco framework**. We have divided the documentation into multiple groups, each trying to address a specific use case or audience.
 
 ## Why Hydyco ?
 
-> Idea behind Hydyco is just to speed up the process of creating apis. Entrepreneurs can focus more on there ideas , instead of doing same stuff again.
+Idea behind Hydyco is just to speed up the process of creating apis. Entrepreneurs can focus more on there ideas , instead of doing same stuff again.
 
 ## Create new app
 

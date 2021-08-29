@@ -110,7 +110,8 @@ const nightOwl = {
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "Hydyco",
-  tagline: "Hydyco helps you to build your APIs fast 💨",
+  tagline:
+    "Hydyco helps you to build your APIs fast 💨. Simple alternative of strapijs",
   url: "https://hydyco.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -127,7 +128,7 @@ module.exports = {
     navbar: {
       logo: {
         alt: "Hydyco Logo",
-        src: "img/black-logo.png",
+        src: "img/black.svg",
       },
       items: [
         {
@@ -135,6 +136,11 @@ module.exports = {
           docId: "intro",
           position: "left",
           label: "Docs",
+        },
+        {
+          href: "https://github.com/orgs/hydyco/projects/1#column-15728749",
+          label: "Roadmap",
+          position: "right",
         },
         {
           href: "https://github.com/hydyco",
@@ -168,7 +174,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Hydyco.`,
+      copyright: `Made with ❤️ by Rahul Tanwar`,
     },
     prism: {
       theme: nightOwl,

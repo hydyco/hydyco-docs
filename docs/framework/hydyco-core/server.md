@@ -25,7 +25,9 @@ const server = new HydycoServer({
 
 ## Register your DB
 
-> You cannot run Hydyco Server without registering a Database
+:::danger Important
+You cannot run Hydyco Server without registering a Database
+:::
 
 ```js
 const { HydycoMongoose } = require("@hydyco/mongoose-plugin");
@@ -54,7 +56,9 @@ const routes = MongooseExpressRoutes;
 server.registerRoutes([HydycoRoutes(routes)]);
 ```
 
-> You can override routes with custom routes
+:::info
+You can override routes with custom routes
+:::
 
 ## Add Global Middleware
 

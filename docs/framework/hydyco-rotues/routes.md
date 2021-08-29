@@ -172,7 +172,9 @@ All methods except same arguments
   }
 ```
 
-> after method always expect a **return** statement
+:::info Important
+after method always expect a **return** statement
+:::
 
 ## Custom Routes
 
