@@ -64,6 +64,7 @@ function Footer() {
       className={clsx("footer", {
         "footer--dark": footer.style === "dark",
       })}
+      style={{ backgroundColor: "#131418", color: "white" }}
     >
       <div className="container">
         {links && links.length > 0 && (
@@ -111,7 +112,7 @@ function Footer() {
                 }}
               />
             ) : null}
-            <img src="/img/black.svg" style={{ width: 200 }} />
+            <img src="/img/white.svg" style={{ width: 150 }} />
           </div>
         )}
       </div>

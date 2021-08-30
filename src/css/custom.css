@@ -5,8 +5,9 @@
  * work well for content-centric websites.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 /* You can override the default Infima variables here. */
+
 :root {
   --ifm-color-primary: #141414;
   --ifm-color-primary-dark: #121212;
@@ -19,14 +20,7 @@
 }
 
 * {
-  font-family: "Roboto", sans-serif;
-}
-.docusaurus-highlight-code-line {
-  background-color: rgb(72, 77, 91);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-  font-size: 16px;
+  font-family: "Rubik", sans-serif !important;
 }
 
 .button-black-3d {
@@ -90,4 +84,8 @@
     width: 100%;
     justify-content: center;
   }
+}
+
+.footer__link-item:hover {
+  color: white;
 }
