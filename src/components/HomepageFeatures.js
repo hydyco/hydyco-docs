@@ -58,7 +58,7 @@ function Feature({ Svg, title, description }) {
       <div className="text--center">
         <img className={styles.featureSvg} alt={title} src={Svg} />
       </div>
-      <div className="text--center padding-horiz--md">
+      <div className="text--center padding-horiz--md" style={{ marginTop: 20 }}>
         <h3>{title}</h3>
         <p>{description}</p>
       </div>
@@ -69,7 +69,7 @@ function Feature({ Svg, title, description }) {
 export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
-      <div className="container">
+      <div className="container" style={{ marginTop: 20 }}>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
