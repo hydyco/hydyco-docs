@@ -16,7 +16,7 @@ function HomepageHeader() {
         <p className={styles.tag_line}>
           Hydyco helps you to build your APIs fast 💨.
           <i> Simple alternative of </i>
-          <a href="https://strapi.io/">Strapi</a>
+          <a href="https://strapi.io/">Strapi.io</a>
         </p>
         <div className={styles.buttons}>
           <button
